@@ -9,9 +9,15 @@ class PrinterI(Demo.Printer):
         print(self.t, s)
         return s + "*"
 
+    def stringToLower(self, s, current=None):
+        return s.lower()
+
+    def stringToUpper(self, s, current=None):
+        return s.upper()
+
 communicator = Ice.initialize(sys.argv) 
 
-adapter = communicator.createObjectAdapterWithEndpoints("SimpleAdapter", "default -p 11000")
+adapter = communicator.createObjectAdapterWithEndpoints("SimpleAdapter", "default -p 5678")
 object1 = PrinterI("Object1 says:")
 object2 = PrinterI("Object2 says:")
 adapter.add(object1, communicator.stringToIdentity("SimplePrinter1"))
